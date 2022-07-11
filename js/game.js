@@ -15,8 +15,8 @@ function drawSprite(sprite, x, y) {
     spritesheet,
     x_loc,
     y_loc,
-    16,
-    16,
+    24,
+    24,
     x * tileSize,
     y * tileSize,
     tileSize,
@@ -29,11 +29,6 @@ function draw() {
   drawSprite(0, x, y);
 }
 
-function sum(a, b) {
-  return a + b;
-}
-exports.sum = sum;
-
 /**
  *
  * @param {number} sprite the index of the sprite in the spritesheet
@@ -44,8 +39,14 @@ function getSpriteLocation(sprite) {
   x_offset = 24;
   y_offset = 24;
 
-  x_loc = sprite / 18;
-  y_loc = sprite / 18;
+  // if the sprite is outside the appropriate bounds, return 36x36
+  // this is a midpoint of a sprite and will render really odd
+  if ((sprite < 0) || (sprite > 401)) {
+    return [36, 36]
+  };
+
+  x_loc = (sprite % 18) * 24;
+  y_loc = Math.floor(sprite / 18) * 24;
 
   return [x_loc + x_offset, y_loc + y_offset];
 }
