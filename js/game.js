@@ -14,7 +14,7 @@ function drawSprite(sprite, x, y) {
     spritesheet,
     sprite * 16,
     0,
-    16,
+    sum(8, 8),
     16,
     x * tileSize,
     y * tileSize,
@@ -27,3 +27,8 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   drawSprite(0, x, y);
 }
+
+function sum(a, b) {
+  return a + b;
+}
+module.exports = sum;
