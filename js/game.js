@@ -32,7 +32,7 @@ function draw() {
 function sum(a, b) {
   return a + b;
 }
-module.exports = sum;
+exports.sum = sum;
 
 /**
  *
@@ -49,4 +49,4 @@ function getSpriteLocation(sprite) {
 
   return [x_loc + x_offset, y_loc + y_offset];
 }
-module.exports = getSpriteLocation;
+exports.getSpriteLocation = getSpriteLocation;
