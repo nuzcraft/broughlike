@@ -1,0 +1,23 @@
+{
+  "name": "broughlike",
+  "version": "1.0.0",
+  "description": "brough bruh",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^28.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuzcraft/broughlike.git"
+  },
+  "author": "nuzcraft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuzcraft/broughlike/issues"
+  },
+  "homepage": "https://github.com/nuzcraft/broughlike#readme"
+}
