@@ -91,3 +91,4 @@ function getSpritesheetInfo(spritesheet) {
     num_tiles,
   ];
 }
+exports.getSpritesheetInfo = getSpritesheetInfo;
