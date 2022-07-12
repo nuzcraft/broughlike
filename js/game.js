@@ -26,6 +26,13 @@ function drawSprite(sprite, x, y) {
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < numTiles; i++) {
+    for (let j = 0; j < numTiles; j++) {
+      getTile(i, j).draw();
+    }
+  }
+
   drawSprite(0, x, y);
 }
 
@@ -41,9 +48,9 @@ function getSpriteLocation(sprite) {
 
   // if the sprite is outside the appropriate bounds, return 36x36
   // this is a midpoint of a sprite and will render really odd
-  if ((sprite < 0) || (sprite > 401)) {
-    return [36, 36]
-  };
+  if (sprite < 0 || sprite > 401) {
+    return [36, 36];
+  }
 
   x_loc = (sprite % 18) * 24;
   y_loc = Math.floor(sprite / 18) * 24;
