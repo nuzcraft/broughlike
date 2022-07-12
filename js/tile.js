@@ -7,18 +7,18 @@ class Tile {
   }
 
   draw() {
-    drawSprite(this.sprite, this.x, this.y);
+    drawSprite(this.sprite, spritesheet_world, this.x, this.y);
   }
 }
 
 class Floor extends Tile {
   constructor(x, y) {
-    super(x, y, 2, true);
+    super(x, y, spr_idx_floor, true);
   }
 }
 
 class Wall extends Tile {
   constructor(x, y) {
-    super(x, y, 3, false);
+    super(x, y, spr_idx_wall_pitted, false);
   }
 }

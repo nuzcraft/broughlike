@@ -9,8 +9,8 @@ function setupCanvas() {
   ctx.imageSmoothingEnabled = false;
 }
 
-function drawSprite(sprite, x, y) {
-  [x_loc, y_loc] = getSpriteLocation(sprite);
+function drawSprite(sprite, spritesheet, x, y) {
+  let [x_loc, y_loc] = getSpriteLocation(sprite, spritesheet);
   ctx.drawImage(
     spritesheet,
     x_loc,
@@ -33,7 +33,7 @@ function draw() {
     }
   }
 
-  drawSprite(0, x, y);
+  drawSprite(spr_idx_knight, spritesheet_creatures, x, y);
 }
 
 /**
@@ -41,20 +41,53 @@ function draw() {
  * @param {number} sprite the index of the sprite in the spritesheet
  * this function assumes the oryx_16bit_fantasy_creatures_trans.png spritesheet
  */
-function getSpriteLocation(sprite) {
-  // there is a 24x24 blank border before sprites actually start
-  x_offset = 24;
-  y_offset = 24;
+function getSpriteLocation(sprite, spritesheet) {
+  let [
+    x_offset,
+    y_offset,
+    x_default,
+    y_default,
+    num_columns,
+    tile_width,
+    num_tiles,
+  ] = getSpritesheetInfo(spritesheet);
 
-  // if the sprite is outside the appropriate bounds, return 36x36
-  // this is a midpoint of a sprite and will render really odd
-  if (sprite < 0 || sprite > 401) {
-    return [36, 36];
+  // if the sprite is outside the appropriate bounds,
+  // return a default midpoint of a sprite and will render really odd
+  if (sprite < 0 || sprite > num_tiles) {
+    return [x_default, y_default];
   }
 
-  x_loc = (sprite % 18) * 24;
-  y_loc = Math.floor(sprite / 18) * 24;
+  let x_loc = (sprite % num_columns) * tile_width;
+  let y_loc = Math.floor(sprite / num_columns) * tile_width;
 
   return [x_loc + x_offset, y_loc + y_offset];
 }
 exports.getSpriteLocation = getSpriteLocation;
+
+function getSpritesheetInfo(spritesheet) {
+  let x_offset = 24;
+  let y_offset = 24;
+  let x_default = 36;
+  let y_default = 36;
+  let num_columns = 18;
+  let tile_width = 24;
+  let num_tiles = 401;
+  if (spritesheet == spritesheet_creatures) {
+    // change nothing
+  } else if (spritesheet == spritesheet_world) {
+    num_columns = 56;
+    num_tiles = 2240;
+  } else {
+    // change nothing
+  }
+  return [
+    x_offset,
+    y_offset,
+    x_default,
+    y_default,
+    num_columns,
+    tile_width,
+    num_tiles,
+  ];
+}
