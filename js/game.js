@@ -64,7 +64,11 @@ function getSpritesheet(spritesheet_index) {
     return "undefined spritesheet"
   }
 }
-exports.getSpritesheet = getSpritesheet
+try {
+  exports.getSpritesheet = getSpritesheet
+} catch (e) {
+  // do nothing :)
+}
 
 function getSpriteLocation(sprite_index, spritesheet_index) {
   let [
@@ -88,7 +92,7 @@ function getSpriteLocation(sprite_index, spritesheet_index) {
 
   return [x_loc + x_offset, y_loc + y_offset];
 }
-exports.getSpriteLocation = getSpriteLocation;
+// exports.getSpriteLocation = getSpriteLocation;
 
 function getSpritesheetInfo(spritesheet_index) {
   let x_offset = 24;
@@ -116,4 +120,4 @@ function getSpritesheetInfo(spritesheet_index) {
     num_tiles,
   ];
 }
-exports.getSpritesheetInfo = getSpritesheetInfo;
+// exports.getSpritesheetInfo = getSpritesheetInfo;
