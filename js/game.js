@@ -10,7 +10,8 @@ function setupCanvas() {
 }
 
 function drawSprite(sprite_index, spritesheet_index, x, y) {
-  let [spritesheet, x_loc, y_loc] = getSpriteLocation(
+  let spritesheet = getSpritesheet(spritesheet_index);
+  let [x_loc, y_loc] = getSpriteLocation(
     sprite_index,
     spritesheet_index
   );
@@ -40,12 +41,33 @@ function draw() {
 }
 
 /**
- * @param {number} sprite the index of the sprite in the spritesheet
- * this function assumes the oryx_16bit_fantasy_creatures_trans.png spritesheet
+ * Get the spritesheet, handling undefined instances
+ * @param {number} spritesheet_index 
+ * @returns spritesheet Image() or string if there is no image
  */
+function getSpritesheet(spritesheet_index) {
+  if (spritesheet_index == 0){
+    // creatures spritesheet
+    if (typeof spritesheet_creatures === "undefined"){
+      return "spritesheet_creatures"
+    } else {
+      return spritesheet_creatures
+    }
+  } else if (spritesheet_index == 1) {
+    // world spritesheet
+    if (typeof spritesheet_world === "undefined"){
+      return "spritesheet_world"
+    } else {
+      return spritesheet_world
+    }
+  } else {
+    return "undefined spritesheet"
+  }
+}
+exports.getSpritesheet = getSpritesheet
+
 function getSpriteLocation(sprite_index, spritesheet_index) {
   let [
-    spritesheet,
     x_offset,
     y_offset,
     x_default,
@@ -64,14 +86,11 @@ function getSpriteLocation(sprite_index, spritesheet_index) {
   let x_loc = (sprite_index % num_columns) * tile_width;
   let y_loc = Math.floor(sprite_index / num_columns) * tile_width;
 
-  return [spritesheet, x_loc + x_offset, y_loc + y_offset];
+  return [x_loc + x_offset, y_loc + y_offset];
 }
 exports.getSpriteLocation = getSpriteLocation;
 
 function getSpritesheetInfo(spritesheet_index) {
-  // the spritesheets are defined globally in index.html, and aren't available
-  // to unit testing. This accommodates since unit testing doesn't need the file
-  let spritesheet = spritesheet_creatures
   let x_offset = 24;
   let y_offset = 24;
   let x_default = 36;
@@ -82,14 +101,12 @@ function getSpritesheetInfo(spritesheet_index) {
   if (spritesheet_index == 0) {
     // change nothing
   } else if (spritesheet_index == 1) {
-    spritesheet = spritesheet_world
     num_columns = 56;
     num_tiles = 2240;
   } else {
     // change nothing
   }
   return [
-    spritesheet,
     x_offset,
     y_offset,
     x_default,
