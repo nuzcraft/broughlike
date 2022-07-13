@@ -70,6 +70,12 @@ try {
   // do nothing :)
 }
 
+/**
+ * Get the location of a sprite on a sheet
+ * @param {number} sprite_index 
+ * @param {number} spritesheet_index 
+ * @returns x, y location (top left) of the selected sprite on the spritesheet
+ */
 function getSpriteLocation(sprite_index, spritesheet_index) {
   let [
     x_offset,
@@ -98,6 +104,11 @@ try {
   // do nothing :)
 }
 
+/**
+ * get information about a spritesheet based on the index (pre-compiled)
+ * @param {number} spritesheet_index 
+ * @returns bounty of info about a spritesheet
+ */
 function getSpritesheetInfo(spritesheet_index) {
   let x_offset = 24;
   let y_offset = 24;
