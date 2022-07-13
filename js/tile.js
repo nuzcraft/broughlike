@@ -7,7 +7,7 @@ class Tile {
   }
 
   draw() {
-    drawSprite(this.sprite, spritesheet_world, this.x, this.y);
+    drawSprite(this.sprite, sprsht_idx_world, this.x, this.y);
   }
 }
 

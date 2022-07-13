@@ -9,8 +9,11 @@ function setupCanvas() {
   ctx.imageSmoothingEnabled = false;
 }
 
-function drawSprite(sprite, spritesheet, x, y) {
-  let [x_loc, y_loc] = getSpriteLocation(sprite, spritesheet);
+function drawSprite(sprite_index, spritesheet_index, x, y) {
+  let [spritesheet, x_loc, y_loc] = getSpriteLocation(
+    sprite_index,
+    spritesheet_index
+  );
   ctx.drawImage(
     spritesheet,
     x_loc,
@@ -33,7 +36,7 @@ function draw() {
     }
   }
 
-  drawSprite(spr_idx_knight, spritesheet_creatures, x, y);
+  drawSprite(spr_idx_knight, sprsht_idx_creatures, x, y);
 }
 
 /**
@@ -41,8 +44,9 @@ function draw() {
  * @param {number} sprite the index of the sprite in the spritesheet
  * this function assumes the oryx_16bit_fantasy_creatures_trans.png spritesheet
  */
-function getSpriteLocation(sprite, spritesheet) {
+function getSpriteLocation(sprite_index, spritesheet_index) {
   let [
+    spritesheet,
     x_offset,
     y_offset,
     x_default,
@@ -50,22 +54,29 @@ function getSpriteLocation(sprite, spritesheet) {
     num_columns,
     tile_width,
     num_tiles,
-  ] = getSpritesheetInfo(spritesheet);
+  ] = getSpritesheetInfo(spritesheet_index);
 
   // if the sprite is outside the appropriate bounds,
   // return a default midpoint of a sprite and will render really odd
-  if (sprite < 0 || sprite > num_tiles) {
+  if (sprite_index < 0 || sprite_index > num_tiles) {
     return [x_default, y_default];
   }
 
-  let x_loc = (sprite % num_columns) * tile_width;
-  let y_loc = Math.floor(sprite / num_columns) * tile_width;
+  let x_loc = (sprite_index % num_columns) * tile_width;
+  let y_loc = Math.floor(sprite_index / num_columns) * tile_width;
 
-  return [x_loc + x_offset, y_loc + y_offset];
+  return [spritesheet, x_loc + x_offset, y_loc + y_offset];
 }
 exports.getSpriteLocation = getSpriteLocation;
 
-function getSpritesheetInfo(spritesheet) {
+function getSpritesheetInfo(spritesheet_index) {
+  // the spritesheets are defined globally in index.html, and aren't available
+  // to unit testing. This accommodates since unit testing doesn't need the file
+  if (typeof spritesheet_creatures !== "undefined") {
+    var spritesheet = spritesheet_creatures;
+  } else {
+    var spritesheet = "spritesheet_creatures";
+  }
   let x_offset = 24;
   let y_offset = 24;
   let x_default = 36;
@@ -73,15 +84,21 @@ function getSpritesheetInfo(spritesheet) {
   let num_columns = 18;
   let tile_width = 24;
   let num_tiles = 401;
-  if (spritesheet == spritesheet_creatures) {
+  if (spritesheet_index == 0) {
     // change nothing
-  } else if (spritesheet == spritesheet_world) {
+  } else if (spritesheet_index == 1) {
+    if (typeof spritesheet_world !== "undefined") {
+      spritesheet = spritesheet_world;
+    } else {
+      spritesheet = "spritesheet_world";
+    }
     num_columns = 56;
     num_tiles = 2240;
   } else {
     // change nothing
   }
   return [
+    spritesheet,
     x_offset,
     y_offset,
     x_default,
