@@ -92,7 +92,11 @@ function getSpriteLocation(sprite_index, spritesheet_index) {
 
   return [x_loc + x_offset, y_loc + y_offset];
 }
-// exports.getSpriteLocation = getSpriteLocation;
+try {
+  exports.getSpriteLocation = getSpriteLocation;
+} catch (e) {
+  // do nothing :)
+}
 
 function getSpritesheetInfo(spritesheet_index) {
   let x_offset = 24;
