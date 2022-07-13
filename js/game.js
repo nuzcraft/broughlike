@@ -40,7 +40,6 @@ function draw() {
 }
 
 /**
- *
  * @param {number} sprite the index of the sprite in the spritesheet
  * this function assumes the oryx_16bit_fantasy_creatures_trans.png spritesheet
  */
@@ -72,11 +71,7 @@ exports.getSpriteLocation = getSpriteLocation;
 function getSpritesheetInfo(spritesheet_index) {
   // the spritesheets are defined globally in index.html, and aren't available
   // to unit testing. This accommodates since unit testing doesn't need the file
-  if (typeof spritesheet_creatures !== "undefined") {
-    var spritesheet = spritesheet_creatures;
-  } else {
-    var spritesheet = "spritesheet_creatures";
-  }
+  let spritesheet = spritesheet_creatures
   let x_offset = 24;
   let y_offset = 24;
   let x_default = 36;
@@ -87,11 +82,7 @@ function getSpritesheetInfo(spritesheet_index) {
   if (spritesheet_index == 0) {
     // change nothing
   } else if (spritesheet_index == 1) {
-    if (typeof spritesheet_world !== "undefined") {
-      spritesheet = spritesheet_world;
-    } else {
-      spritesheet = "spritesheet_world";
-    }
+    spritesheet = spritesheet_world
     num_columns = 56;
     num_tiles = 2240;
   } else {
