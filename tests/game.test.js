@@ -1,5 +1,6 @@
 const game = require("../js/game");
 
+// getSpritesheet
 test("getSpritesheet: spritesheet index 0 returns spritesheet_creatures", () => {
   expect(game.getSpritesheet(0)).toBe("spritesheet_creatures");
 });
@@ -20,6 +21,67 @@ test("getSpritesheet: spritesheet index 1 with defined spritesheet_creatures var
 
 test("getSpritesheet: spritesheet with unmapped index returns undefined spritesheet", () => {
   expect(game.getSpritesheet(-2)).toBe("undefined spritesheet");
+});
+
+//getSpritesheetInfo
+test("getSpritesheetInfo: spritesheet index 0 returns values consistent with the creatures spritesheet", () => {
+  let [
+    x_offset,
+    y_offset,
+    x_default,
+    y_default,
+    num_columns,
+    tile_width,
+    num_tiles,
+  ] = game.getSpritesheetInfo(0);
+
+  expect(x_offset).toBe(24);
+  expect(y_offset).toBe(24);
+  expect(x_default).toBe(36);
+  expect(y_default).toBe(36);
+  expect(num_columns).toBe(18);
+  expect(tile_width).toBe(24);
+  expect(num_tiles).toBe(401)
+});
+
+test("getSpritesheetInfo: spritesheet index 1 returns values consistent with the world spritesheet", () => {
+  let [
+    x_offset,
+    y_offset,
+    x_default,
+    y_default,
+    num_columns,
+    tile_width,
+    num_tiles,
+  ] = game.getSpritesheetInfo(1);
+
+  expect(x_offset).toBe(24);
+  expect(y_offset).toBe(24);
+  expect(x_default).toBe(36);
+  expect(y_default).toBe(36);
+  expect(num_columns).toBe(56);
+  expect(tile_width).toBe(24);
+  expect(num_tiles).toBe(2240)
+});
+
+test("getSpritesheetInfo: spritesheet with unmapped index returns values consistent with the creatures spritesheet", () => {
+  let [
+    x_offset,
+    y_offset,
+    x_default,
+    y_default,
+    num_columns,
+    tile_width,
+    num_tiles,
+  ] = game.getSpritesheetInfo(-2);
+
+  expect(x_offset).toBe(24);
+  expect(y_offset).toBe(24);
+  expect(x_default).toBe(36);
+  expect(y_default).toBe(36);
+  expect(num_columns).toBe(18);
+  expect(tile_width).toBe(24);
+  expect(num_tiles).toBe(401)
 });
 
 /***

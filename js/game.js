@@ -120,4 +120,8 @@ function getSpritesheetInfo(spritesheet_index) {
     num_tiles,
   ];
 }
-// exports.getSpritesheetInfo = getSpritesheetInfo;
+try {
+  exports.getSpritesheetInfo = getSpritesheetInfo;
+} catch (e) {
+  // do nothing :)
+}
