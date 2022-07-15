@@ -1,3 +1,5 @@
+
+
 class Tile {
   constructor(x, y, sprite, passable) {
     this.x = x;
@@ -10,15 +12,30 @@ class Tile {
     drawSprite(this.sprite, sprsht_idx_world, this.x, this.y);
   }
 }
+try {
+  exports.Tile = Tile;
+} catch (e) {
+  // do nothing :)
+}
 
 class Floor extends Tile {
   constructor(x, y) {
     super(x, y, spr_idx_floor, true);
   }
 }
+try {
+  exports.Floor = Floor;
+} catch (e) {
+  // do nothing :)
+}
 
 class Wall extends Tile {
   constructor(x, y) {
     super(x, y, spr_idx_wall_pitted, false);
   }
+}
+try {
+  exports.Wall = Wall;
+} catch (e) {
+  // do nothing :)
 }

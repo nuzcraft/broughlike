@@ -1,4 +1,4 @@
-const tile = require("../js/tile");
+const tile_req = require("../js/tile");
 
 function generateLevel() {
   generateTiles();
@@ -22,7 +22,7 @@ function inBounds(x, y) {
   return x > 0 && y > 0 && x < numTiles - 1 && y < numTiles - 1;
 }
 try {
-  exports.inBounds = inBounds
+  exports.inBounds = inBounds;
 } catch (e) {
   // do nothing :)
 }
@@ -31,11 +31,11 @@ function getTile(x, y) {
   if (inBounds(x, y)) {
     return tiles[x][y];
   } else {
-    return new tile.Wall(x, y);
+    return new tile_req.Wall(x, y);
   }
 }
 try {
-  exports.getTile = getTile
+  exports.getTile = getTile;
 } catch (e) {
   // do nothing :)
 }

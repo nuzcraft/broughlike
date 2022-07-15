@@ -1,4 +1,4 @@
-const vars = require('../js/vars')
+const vars_req = require("../js/vars");
 
 class Tile {
   constructor(x, y, sprite, passable) {
@@ -12,19 +12,30 @@ class Tile {
     drawSprite(this.sprite, sprsht_idx_world, this.x, this.y);
   }
 }
-exports.Tile = Tile
+try {
+  exports.Tile = Tile;
+} catch (e) {
+  // do nothing :)
+}
 
 class Floor extends Tile {
   constructor(x, y) {
     super(x, y, spr_idx_floor, true);
   }
 }
-exports.Floor = Floor
+try {
+  exports.Floor = Floor;
+} catch (e) {
+  // do nothing :)
+}
 
 class Wall extends Tile {
   constructor(x, y) {
-    super(x, y, vars.spr_idx_wall_pitted, false);
+    super(x, y, vars_req.spr_idx_wall_pitted, false);
   }
 }
-exports.Wall = Wall
-
+try {
+  exports.Wall = Wall;
+} catch (e) {
+  // do nothing :)
+}
