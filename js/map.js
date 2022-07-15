@@ -19,6 +19,11 @@ function generateTiles() {
 function inBounds(x, y) {
   return x > 0 && y > 0 && x < numTiles - 1 && y < numTiles - 1;
 }
+try {
+  exports.inBounds = inBounds
+} catch (e) {
+  // do nothing :)
+}
 
 function getTile(x, y) {
   if (inBounds(x, y)) {
@@ -26,6 +31,11 @@ function getTile(x, y) {
   } else {
     return new Wall(x, y);
   }
+}
+try {
+  exports.inBounds = inBounds
+} catch (e) {
+  // do nothing :)
 }
 
 function randomPassableTile() {
