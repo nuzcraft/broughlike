@@ -1,10 +1,13 @@
 const tile_req = require("../js/tile");
 
 function generateLevel() {
-  generateTiles();
+  tryTo("generate map", function () {
+    return generateTiles() == randomPassableTile().getConnectedTiles().length;
+  });
 }
 
 function generateTiles() {
+  let passableTiles = 0;
   tiles = [];
   for (let i = 0; i < numTiles; i++) {
     tiles[i] = [];
@@ -13,9 +16,11 @@ function generateTiles() {
         tiles[i][j] = new Wall(i, j);
       } else {
         tiles[i][j] = new Floor(i, j);
+        passableTiles++;
       }
     }
   }
+  return passableTiles;
 }
 
 function inBounds(x, y) {
