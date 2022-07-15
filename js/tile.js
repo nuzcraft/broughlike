@@ -9,7 +9,7 @@ class Tile {
   }
 
   draw() {
-    drawSprite(this.sprite, sprsht_idx_world, this.x, this.y);
+    drawSprite(this.sprite, vars_req.sprsht_idx_world, this.x, this.y);
   }
 }
 try {
@@ -20,7 +20,7 @@ try {
 
 class Floor extends Tile {
   constructor(x, y) {
-    super(x, y, spr_idx_floor, true);
+    super(x, y, vars_req.spr_idx_floor, true);
   }
 }
 try {
