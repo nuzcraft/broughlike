@@ -11,10 +11,7 @@ function setupCanvas() {
 
 function drawSprite(sprite_index, spritesheet_index, x, y) {
   let spritesheet = getSpritesheet(spritesheet_index);
-  let [x_loc, y_loc] = getSpriteLocation(
-    sprite_index,
-    spritesheet_index
-  );
+  let [x_loc, y_loc] = getSpriteLocation(sprite_index, spritesheet_index);
   ctx.drawImage(
     spritesheet,
     x_loc,
@@ -37,43 +34,43 @@ function draw() {
     }
   }
 
-  drawSprite(spr_idx_knight, sprsht_idx_creatures, x, y);
+  player.draw();
 }
 
 /**
  * Get the spritesheet, handling undefined instances
- * @param {number} spritesheet_index 
+ * @param {number} spritesheet_index
  * @returns spritesheet Image() or string if there is no image
  */
 function getSpritesheet(spritesheet_index) {
-  if (spritesheet_index == 0){
+  if (spritesheet_index == 0) {
     // creatures spritesheet
-    if (typeof spritesheet_creatures === "undefined"){
-      return "spritesheet_creatures"
+    if (typeof spritesheet_creatures === "undefined") {
+      return "spritesheet_creatures";
     } else {
-      return spritesheet_creatures
+      return spritesheet_creatures;
     }
   } else if (spritesheet_index == 1) {
     // world spritesheet
-    if (typeof spritesheet_world === "undefined"){
-      return "spritesheet_world"
+    if (typeof spritesheet_world === "undefined") {
+      return "spritesheet_world";
     } else {
-      return spritesheet_world
+      return spritesheet_world;
     }
   } else {
-    return "undefined spritesheet"
+    return "undefined spritesheet";
   }
 }
 try {
-  exports.getSpritesheet = getSpritesheet
+  exports.getSpritesheet = getSpritesheet;
 } catch (e) {
   // do nothing :)
 }
 
 /**
  * Get the location of a sprite on a sheet
- * @param {number} sprite_index 
- * @param {number} spritesheet_index 
+ * @param {number} sprite_index
+ * @param {number} spritesheet_index
  * @returns x, y location (top left) of the selected sprite on the spritesheet
  */
 function getSpriteLocation(sprite_index, spritesheet_index) {
@@ -106,7 +103,7 @@ try {
 
 /**
  * get information about a spritesheet based on the index (pre-compiled)
- * @param {number} spritesheet_index 
+ * @param {number} spritesheet_index
  * @returns bounty of info about a spritesheet
  */
 function getSpritesheetInfo(spritesheet_index) {
