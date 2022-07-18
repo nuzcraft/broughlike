@@ -25,6 +25,9 @@
     spritesheet_world = new Image();
     spritesheet_world.src = "oryx_16bit_fantasy_world_trans.png";
 
+    spritesheet_items = new Image();
+    spritesheet_items.src = "oryx_16bit_fantasy_items_trans.png";
+
     document.querySelector("html").onkeypress = function(e){
         if(e.key=="w") player.tryMove(0, -1);
         if(e.key=="s") player.tryMove(0, 1);

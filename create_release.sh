@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp -R index.html oryx_16bit_fantasy_creatures_trans.png oryx_16bit_fantasy_world_trans.png ./js/ ./release
+cp -R index.html oryx_16bit_fantasy_creatures_trans.png oryx_16bit_fantasy_world_trans.png oryx_16bit_fantasy_items_trans.png ./js/ ./release
 
 # remove require statements + references for release
 # so the game can run without issues just from the index file

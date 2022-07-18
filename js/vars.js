@@ -23,3 +23,5 @@ const spr_idx_evil_turnip = 363;
 const sprsht_idx_world = 1;
 const spr_idx_floor = 5;
 const spr_idx_wall_pitted = 56;
+
+const sprsht_idx_items = 2;
