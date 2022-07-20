@@ -4,7 +4,7 @@ class Monster {
   constructor(tile, sprite_index, hp) {
     this.move(tile);
     this.sprite_index = sprite_index;
-    this.spritesheet_index = vars_req.sprsht_idx_items;
+    this.spritesheet_index = vars_req.sprsht_idx_creatures;
     this.hp = hp;
   }
 
