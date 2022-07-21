@@ -1,11 +1,12 @@
 const tileSize = 64;
 const numTiles = 9;
 const uiWidth = 4;
+var level = 1;
 
 const sprsht_idx_creatures = 0;
 const spr_idx_knight = 0;
 const spr_idx_snake = 225;
-const spr_idx_bird_white = 232;
+const spr_idx_bird_white = 231;
 const spr_idx_bird_blue = 232;
 const spr_idx_bird_black = 233;
 const spr_idx_goop_brown = 267;

@@ -42,3 +42,33 @@ class Player extends Monster {
     this.isPlayer = true;
   }
 }
+
+class Bird extends Monster {
+  constructor(tile) {
+    super(tile, vars_req.spr_idx_bird_white, 3);
+  }
+}
+
+class Snake extends Monster {
+  constructor(tile) {
+    super(tile, vars_req.spr_idx_snake, 1);
+  }
+}
+
+class Goop extends Monster {
+  constructor(tile) {
+    super(tile, vars_req.spr_idx_goop_brown, 2);
+  }
+}
+
+class Dragon extends Monster {
+  constructor(tile) {
+    super(tile, vars_req.spr_idx_dragon_red, 1);
+  }
+}
+
+class Turnip extends Monster {
+  constructor(tile) {
+    super(tile, vars_req.spr_idx_turnip, 2);
+  }
+}

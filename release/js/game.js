@@ -35,6 +35,10 @@ function draw() {
     }
   }
 
+  for (let i = 0; i < monsters.length; i++) {
+    monsters[i].draw();
+  }
+
   player.draw();
 }
 
@@ -82,14 +86,8 @@ try {
  * @returns x, y location (top left) of the selected sprite on the spritesheet
  */
 function getSpriteLocation(sprite_index, spritesheet_index) {
-  let [
-    x_offset,
-    y_offset,
-    x_default,
-    y_default,
-    num_columns,
-    num_tiles,
-  ] = getSpritesheetInfo(spritesheet_index);
+  let [x_offset, y_offset, x_default, y_default, num_columns, num_tiles] =
+    getSpritesheetInfo(spritesheet_index);
   let tile_width = getSpriteSheetTileWidth(spritesheet_index);
 
   // if the sprite is outside the appropriate bounds,
@@ -139,14 +137,7 @@ function getSpritesheetInfo(spritesheet_index) {
   } else {
     // change nothing
   }
-  return [
-    x_offset,
-    y_offset,
-    x_default,
-    y_default,
-    num_columns,
-    num_tiles,
-  ];
+  return [x_offset, y_offset, x_default, y_default, num_columns, num_tiles];
 }
 try {
   exports.getSpritesheetInfo = getSpritesheetInfo;
@@ -154,15 +145,15 @@ try {
   // do nothing :)
 }
 
-function getSpriteSheetTileWidth(spritesheetIndex){
+function getSpriteSheetTileWidth(spritesheetIndex) {
   let tile_width = 24;
-  if (spritesheetIndex == 0){
+  if (spritesheetIndex == 0) {
     // creatures spritesheet
     // do nothing
-  } else if (spritesheetIndex == 1){
+  } else if (spritesheetIndex == 1) {
     // world spritesheet
     // do nothing
-  } else if (spritesheetIndex == 2){
+  } else if (spritesheetIndex == 2) {
     // items spritesheet
     tile_width = 16;
   }
