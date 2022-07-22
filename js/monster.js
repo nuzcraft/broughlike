@@ -30,6 +30,19 @@ class Monster {
       this.tile.x,
       this.tile.y
     );
+    this.drawHp();
+  }
+
+  drawHp(){
+    for(let i=0; i<this.hp; i++){
+      drawSpriteWithSize(
+        spr_idx_heart_full,
+        sprsht_idx_items,
+        this.tile.x + (i%3)*(5/16),
+        this.tile.y + (11/16) - Math.floor(i/3)*(5/16),
+        20,
+      );
+    }
   }
 
   tryMove(dx, dy) {

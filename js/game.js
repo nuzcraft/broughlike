@@ -26,6 +26,23 @@ function drawSprite(sprite_index, spritesheet_index, x, y) {
   );
 }
 
+function drawSpriteWithSize(sprite_index, spritesheet_index, x, y, new_tileSize) {
+  let spritesheet = getSpritesheet(spritesheet_index);
+  let [x_loc, y_loc] = getSpriteLocation(sprite_index, spritesheet_index);
+  let tile_width = getSpriteSheetTileWidth(spritesheet_index);
+  ctx.drawImage(
+    spritesheet,
+    x_loc,
+    y_loc,
+    tile_width,
+    tile_width,
+    x * tileSize,
+    y * tileSize,
+    new_tileSize,
+    new_tileSize
+  );
+}
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
