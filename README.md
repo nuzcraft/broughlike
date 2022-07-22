@@ -8,6 +8,8 @@ https://nluqo.github.io/broughlike-tutorial/stage2.html
 
 https://nluqo.github.io/broughlike-tutorial/stage3.html
 
+https://nluqo.github.io/broughlike-tutorial/stage4.html
+
 sprites by Oryx Design Lab at www.oryxdesignlab.com
 
 interesting problem - I want to use jest for unit testing BUT I also want
