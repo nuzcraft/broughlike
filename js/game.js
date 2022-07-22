@@ -42,6 +42,16 @@ function draw() {
   player.draw();
 }
 
+function tick(){
+  for (let k=monsters.length - 1; k>=0; k--){
+    if (!monsters[k].dead){
+      monsters[k].update();
+    } else {
+      monsters.splice(k, 1);
+    }
+  }
+}
+
 /**
  * Get the spritesheet, handling undefined instances
  * @param {number} spritesheet_index
