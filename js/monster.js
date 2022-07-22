@@ -56,6 +56,12 @@ class Player extends Monster {
     super(tile, vars_req.spr_idx_knight, 3);
     this.isPlayer = true;
   }
+
+  tryMove(dx, dy) {
+    if (super.tryMove(dx, dy)){
+      tick();
+    }
+  }
 }
 
 class Bird extends Monster {
