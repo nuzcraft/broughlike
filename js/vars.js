@@ -2,6 +2,7 @@ const tileSize = 64;
 const numTiles = 9;
 const uiWidth = 4;
 var level = 1;
+const maxHp = 6;
 
 const sprsht_idx_creatures = 0;
 const spr_idx_knight = 0;
