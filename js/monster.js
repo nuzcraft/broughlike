@@ -37,7 +37,7 @@ class Monster {
   draw() {
     if(this.teleportCounter > 0){
       drawSprite(
-        spr_idx_summoning_portal_blue,
+        spr_idx_summoning_circle_blue,
         sprsht_idx_world,
         this.tile.x,
         this.tile.y,

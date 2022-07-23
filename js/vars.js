@@ -29,9 +29,10 @@ const spr_idx_turnip_evil = 363;
 const sprsht_idx_world = 1;
 const spr_idx_floor = 5;
 const spr_idx_wall_pitted = 56;
-const spr_idx_summoning_portal_yellow = 365;
-const spr_idx_summoning_portal_blue = 366;
-const spr_idx_summoning_portal_red = 367;
+const spr_idx_door_portal = 153;
+const spr_idx_summoning_circle_yellow = 365;
+const spr_idx_summoning_circle_blue = 366;
+const spr_idx_summoning_circle_red = 367;
 
 const sprsht_idx_items = 2;
 const spr_idx_heart_full = 84;
