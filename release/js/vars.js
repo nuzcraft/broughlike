@@ -4,6 +4,10 @@ const uiWidth = 4;
 var level = 1;
 const maxHp = 6;
 
+var gameState = "loading";
+const startingHp = 3;
+const numLevels = 6;
+
 const sprsht_idx_creatures = 0;
 const spr_idx_knight = 0;
 const spr_idx_snake = 225;
