@@ -6,6 +6,7 @@ class Monster {
     this.sprite_index = sprite_index;
     this.spritesheet_index = vars_req.sprsht_idx_creatures;
     this.hp = hp;
+    this.teleportCounter = 2;
   }
 
   heal(damage){
@@ -13,7 +14,8 @@ class Monster {
   }
 
   update() {
-    if(this.stunned){
+    this.teleportCounter--;
+    if(this.stunned || this.teleportCounter > 0){
       this.stunned = false;
       return;
     }
@@ -33,13 +35,23 @@ class Monster {
   }
 
   draw() {
-    drawSprite(
-      this.sprite_index,
-      this.spritesheet_index,
-      this.tile.x,
-      this.tile.y
-    );
-    this.drawHp();
+    if(this.teleportCounter > 0){
+      drawSprite(
+        spr_idx_summoning_portal_blue,
+        sprsht_idx_world,
+        this.tile.x,
+        this.tile.y,
+      )
+    } else {
+      drawSprite(
+        this.sprite_index,
+        this.spritesheet_index,
+        this.tile.x,
+        this.tile.y
+      );
+      this.drawHp();
+    }
+    
   }
 
   drawHp(){
@@ -96,6 +108,7 @@ class Player extends Monster {
   constructor(tile) {
     super(tile, vars_req.spr_idx_knight, 3);
     this.isPlayer = true;
+    this.teleportCounter = 0;
   }
 
   tryMove(dx, dy) {
