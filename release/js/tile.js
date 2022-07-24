@@ -51,6 +51,10 @@ class Tile {
 
   draw() {
     drawSprite(this.sprite, sprsht_idx_world, this.x, this.y);
+
+    if(this.treasure){
+      drawSprite(spr_idx_moneybag, sprsht_idx_items, this.x, this.y);
+    }
   }
 }
 try {
@@ -65,7 +69,11 @@ class Floor extends Tile {
   };
 
   stepOn(monster){
-    //TODO: complete
+    if(monster.isPlayer && this.treasure){
+      score++;
+      this.treasure = false;
+      spawnMonster();
+    }
   }
 }
 try {
@@ -93,6 +101,7 @@ class Exit extends Tile{
   stepOn(monster){
     if(monster.isPlayer){
       if(level == numLevels){
+        addScore(score, true);
         showTitle();
       } else {
         level++;
