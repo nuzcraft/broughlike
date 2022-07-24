@@ -51,6 +51,10 @@ class Tile {
 
   draw() {
     drawSprite(this.sprite, vars_req.sprsht_idx_world, this.x, this.y);
+
+    if(this.treasure){
+      drawSprite(spr_idx_moneybag, sprsht_idx_items, this.x, this.y);
+    }
   }
 }
 try {

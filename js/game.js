@@ -209,7 +209,7 @@ function showTitle(){
   gameState = "title"
 
   drawText("MONSTER HUNTER", 40, true, canvas.height/2 - 110, "white");
-  drawText("WONDERLAND.", 70, true, canvas.height / 2 - 50, "white");
+  drawText("WONDERLAND", 70, true, canvas.height / 2 - 50, "white");
 }
 
 function startGame(){

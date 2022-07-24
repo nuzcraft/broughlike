@@ -35,6 +35,7 @@ const spr_idx_summoning_circle_blue = 366;
 const spr_idx_summoning_circle_red = 367;
 
 const sprsht_idx_items = 2;
+const spr_idx_moneybag = 71;
 const spr_idx_heart_full = 84;
 const spr_idx_heart_half = 85;
 const spr_idx_heart_empty = 86;
