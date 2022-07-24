@@ -216,8 +216,10 @@ function startGame(){
 function startLevel(playerHp){
   spawnRate = 15;
   spawnCounter = spawnRate;
-  
+
   generateLevel();
   player = new Player(randomPassableTile());
   player.hp = playerHp;
+
+  randomPassableTile().replace(Exit);
 }

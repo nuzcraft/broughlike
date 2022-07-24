@@ -101,6 +101,7 @@ class Monster {
     }
     this.tile = tile;
     tile.monster = this;
+    tile.stepOn(this);
   }
 }
 
