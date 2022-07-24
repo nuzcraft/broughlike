@@ -108,6 +108,12 @@ I'm solving this (for now) by adding require statements as needed for unit testi
     2. if level == num levels (and monster is player) then call addScore and showTitle
     3. if level <> num levels (and monster is player) then increment level and call startLevel
 
+### util.js
+
+1. rightPad
+    1. idk what this function does, but it should be tested :)
+
+
 ## Tech Debt
 
 ### game.js
