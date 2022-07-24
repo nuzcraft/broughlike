@@ -27,8 +27,6 @@ I'm solving this (for now) by adding require statements as needed for unit testi
 
 ### game.js
 
-1. getSpritesheet
-    1. check spritesheet_index 0, 1, 2 returns correct + undefined if wrong index passed in
 2. getSpritesheetInfo
     1. verify indexes 0, 1, 2, other return as expected
 3. getSpriteLocation
