@@ -60,6 +60,7 @@ function draw() {
     player.draw();
 
     drawText("Level: " + level, 30, false, 40, "white");
+    drawText("Score: " + score, 30, false, 70, "white");
   }
 }
 
@@ -73,6 +74,7 @@ function tick(){
   }
 
   if (player.dead){
+    addScore(score, false);
     gameState = "dead";
   }
 
@@ -210,10 +212,13 @@ function showTitle(){
 
   drawText("MONSTER HUNTER", 40, true, canvas.height/2 - 110, "white");
   drawText("WONDERLAND", 70, true, canvas.height / 2 - 50, "white");
+
+  drawScores();
 }
 
 function startGame(){
   level = 1;
+  score = 0;
   startLevel(startingHp);
   gameState = "running";
 }
@@ -240,4 +245,60 @@ function drawText(text, size, centered, textY, color){
   }
 
   ctx.fillText(text, textX, textY);
+}
+
+function getScores(){
+  if(localStorage["scores"]){
+    return JSON.parse(localStorage["scores"])
+  } else {
+    return [];
+  }
+}
+
+function addScore(score, won){
+  let scores = getScores();
+  let scoreObject = {score: score, run: 1, totalScore: score, active: won};
+  let lastScore = scores.pop();
+
+  if(lastScore){
+    if(lastScore.active){
+      scoreObject.run = lastScore.run + 1;
+      scoreObject.totalScore += lastScore.totalScore;
+    } else {
+      scores.push(lastScore);
+    }
+  }
+  scores.push(scoreObject);
+
+  localStorage["scores"] = JSON.stringify(scores);
+}
+
+function drawScores(){
+  let scores = getScores();
+  if(scores.length){
+    drawText(
+      rightPad(["RUN", "SCORE", "TOTAL"]),
+      18,
+      true,
+      canvas.height/2,
+      "white",
+    );
+
+    let newestScore = score.pop();
+    scores.sort(function(a, b){
+      return b.totalScore - a.totalScore;
+    });
+    scores.unshift(newestScore);
+
+    for(let i=0;i<Math.min(10,scores.length);i++){
+      let scoreText = rightPad([scores[i].run, scores[i].score, scores[i].totalScore]);
+      drawText(
+        scoreText,
+        18,
+        true,
+        canvas.height/2 + 24+i*24,
+        i == 0 ? "aqua":"violet",
+      );
+    }
+  }
 }

@@ -69,7 +69,11 @@ class Floor extends Tile {
   };
 
   stepOn(monster){
-    //TODO: complete
+    if(monster.isPlayer && this.treasure){
+      score++;
+      this.treasure = false;
+      spawnMonster();
+    }
   }
 }
 try {
@@ -97,6 +101,7 @@ class Exit extends Tile{
   stepOn(monster){
     if(monster.isPlayer){
       if(level == numLevels){
+        addScore(score, true);
         showTitle();
       } else {
         level++;
