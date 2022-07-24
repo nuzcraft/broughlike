@@ -1,6 +1,6 @@
 const game = require("../js/game");
 
-// getSpritesheet
+//#region getSpritesheet
 test("getSpritesheet: spritesheet index 0 returns spritesheet_creatures", () => {
   expect(game.getSpritesheet(0)).toBe("spritesheet_creatures");
 });
@@ -31,8 +31,9 @@ test("getSpritesheet: spritesheet index 2 with defined spritesheet_items variabl
 test("getSpritesheet: spritesheet with unmapped index returns undefined spritesheet", () => {
   expect(game.getSpritesheet(-2)).toBe("undefined spritesheet");
 });
+//#endregion
 
-//getSpritesheetInfo
+//#region getSpritesheetInfo
 test("getSpritesheetInfo: spritesheet index 0 returns values consistent with the creatures spritesheet", () => {
   let [x_offset, y_offset, x_default, y_default, num_columns, num_tiles] =
     game.getSpritesheetInfo(0);
@@ -57,6 +58,18 @@ test("getSpritesheetInfo: spritesheet index 1 returns values consistent with the
   expect(num_tiles).toBe(2240);
 });
 
+test("getSpritesheetInfo: spritesheet index 2 returns values consistent with the items spritesheet", () => {
+  let [x_offset, y_offset, x_default, y_default, num_columns, num_tiles] =
+    game.getSpritesheetInfo(2);
+
+  expect(x_offset).toBe(16);
+  expect(y_offset).toBe(16);
+  expect(x_default).toBe(24);
+  expect(y_default).toBe(24);
+  expect(num_columns).toBe(22);
+  expect(num_tiles).toBe(168);
+});
+
 test("getSpritesheetInfo: spritesheet with unmapped index returns values consistent with the creatures spritesheet", () => {
   let [x_offset, y_offset, x_default, y_default, num_columns, num_tiles] =
     game.getSpritesheetInfo(-2);
@@ -68,6 +81,7 @@ test("getSpritesheetInfo: spritesheet with unmapped index returns values consist
   expect(num_columns).toBe(18);
   expect(num_tiles).toBe(401);
 });
+//#endregion
 
 // getSpriteLocation
 test("getSpriteLocation: sprite 0 in the creatures spritesheet is at 24x24 (row 1,column 1)", () => {
