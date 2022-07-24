@@ -27,8 +27,6 @@ I'm solving this (for now) by adding require statements as needed for unit testi
 
 ### game.js
 
-3. getSpriteLocation
-    3. verify an incorrect spritesheet index is handled
 4. getSpriteSheetTileWidth
     1. verify indexes 0, 1, 2, other return as expected
 5. drawText
