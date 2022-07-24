@@ -47,6 +47,28 @@ I'm solving this (for now) by adding require statements as needed for unit testi
     2. verify if 'won' is true, new run is pushed to
     3. verify if 'won' is false, the previous score is added back to the list
 
+### map.js
+
+1. inBounds
+    1. check in bounds as well as out of bounds in all directions
+2. getTile
+    1. if inbounds, check that it returns the necessary tile
+    2. if out of bounds, check that it returns a wall tile
+
+### monster.js
+
+1. heal
+    1. verify that healing to less than max hp heals that amount
+    2. verify that healing at max hp heals to max hp
+    3. verify that healing past max hp heals to max hp
+2. update
+    1. verify teleport counter is decremented
+    2. verify if stunned, stunned is updated to false, returns
+    3. verify if teleport count > 0, stunned is updated to false, returns
+    4. verify if neither stunned nor teleport counter, doStuff() is called
+3. doStuff
+    1. if neighbors are all walls or monsters, do nothing
+    2. if there is an available space, tryMove to that space is called
 
 ## Tech Debt
 
@@ -59,3 +81,9 @@ I'm solving this (for now) by adding require statements as needed for unit testi
 4. startGame - move level, score, gamestate to variables file
 5. startLevel - move spawnRate, spawnCounter, player to variables file
 6. drawScores - split out different sections to individual functions
+
+### map.js
+
+1. generateLevel
+    1. move treasure association to new function
+2. inBounds - change numTiles to be a parameter
