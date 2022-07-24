@@ -83,7 +83,7 @@ test("getSpritesheetInfo: spritesheet with unmapped index returns values consist
 });
 //#endregion
 
-// getSpriteLocation
+//#region getSpriteLocation
 test("getSpriteLocation: sprite 0 in the creatures spritesheet is at 24x24 (row 1,column 1)", () => {
   expect(game.getSpriteLocation(0, 0)).toStrictEqual([24, 24]);
 });
@@ -111,3 +111,4 @@ test("getSpriteLocation: sprite -1 in the creatures spritesheet defaults to 36x3
 test("getSpriteLocation: sprite 425 in the creatures spritesheet defaults to 36x36 (row 1.5, column 1.5)", () => {
   expect(game.getSpriteLocation(425, 0)).toStrictEqual([36, 36]);
 });
+//#endregion

@@ -28,8 +28,6 @@ I'm solving this (for now) by adding require statements as needed for unit testi
 ### game.js
 
 3. getSpriteLocation
-    1. verify a few inputs return the correct outputs
-    2. verify a couple out of bounds indexes work fine
     3. verify an incorrect spritesheet index is handled
 4. getSpriteSheetTileWidth
     1. verify indexes 0, 1, 2, other return as expected
