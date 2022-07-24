@@ -62,6 +62,10 @@ try {
 class Floor extends Tile {
   constructor(x, y) {
     super(x, y, spr_idx_floor, true);
+  };
+
+  stepOn(monster){
+    //TODO: complete
   }
 }
 try {
@@ -79,4 +83,21 @@ try {
   exports.Wall = Wall;
 } catch (e) {
   // do nothing :)
+}
+
+class Exit extends Tile{
+  constructor(x, y){
+    super(x, y, spr_idx_door_portal, true);
+  }
+
+  stepOn(monster){
+    if(monster.isPlayer){
+      if(level == numLevels){
+        showTitle();
+      } else {
+        level++;
+        startLevel(Math.min(maxHp, player.hp+1));
+      }
+    }
+  }
 }
