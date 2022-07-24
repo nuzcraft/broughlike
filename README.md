@@ -69,6 +69,29 @@ I'm solving this (for now) by adding require statements as needed for unit testi
 3. doStuff
     1. if neighbors are all walls or monsters, do nothing
     2. if there is an available space, tryMove to that space is called
+4. tryMove
+    1. if destination is not passable, do nothing
+    2. if destination does not have monster, call move function + return true
+    3. if destination has a monster on it
+        1. if both monsters are not player or both are player, do nothing + return true
+        2. if one is player and one is monster, ensure attackedThisTurn is set to true, target monster is stunned, and target monster is hit + return true
+5. hit
+    1. remove hp from hp pool
+    2. if hp < 0, call die
+6. die
+    1. set dead to true, remove monster from tile, change sprite index to dead sprite
+7. move
+    1. remove monster from old tile, set tile for new monster, call stepon function
+8. Player.tryMove
+    1. tick is called
+9. Snake.doStuff
+    1. super.doStuff is called twice
+    2. if attackedThisTurn set to true during 1st doStuff, second doStuff isn't called
+10. Goop.update
+    1. if goop is not stunned, set stunned to true after update
+11. Dragon.doStuff
+    1. if next to floor space, consume floor and heal by .5
+    2. if not next to floor space, call super.doStuff
 
 ## Tech Debt
 
