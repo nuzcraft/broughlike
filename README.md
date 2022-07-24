@@ -93,6 +93,21 @@ I'm solving this (for now) by adding require statements as needed for unit testi
     1. if next to floor space, consume floor and heal by .5
     2. if not next to floor space, call super.doStuff
 
+### tile.js
+
+1. replace
+    1. tile that starts as one type is returned as a new type
+2. dist
+    1. get a couple examples and make sure they return expected values
+3. Floor.stepOn
+    1. if monster is not player, do nothing
+    2. if floor is not treasure, do nothing
+    3. if monster is player and floor is treasure then increment score, remove treasure, call spawnMonster
+4. Exit.stepon
+    1. if monster is not player, do nothing
+    2. if level == num levels (and monster is player) then call addScore and showTitle
+    3. if level <> num levels (and monster is player) then increment level and call startLevel
+
 ## Tech Debt
 
 ### game.js
