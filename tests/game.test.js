@@ -14,9 +14,18 @@ test("getSpritesheet: spritesheet index 1 returns spritesheet_world", () => {
   expect(game.getSpritesheet(1)).toBe("spritesheet_world");
 });
 
-test("getSpritesheet: spritesheet index 1 with defined spritesheet_creatures variable returns the variable", () => {
+test("getSpritesheet: spritesheet index 1 with defined spritesheet_world variable returns the variable", () => {
   spritesheet_world = "fake_name_again";
   expect(game.getSpritesheet(1)).toBe("fake_name_again");
+});
+
+test("getSpritesheet: spritesheet index 2 returns spritesheet_items", () => {
+  expect(game.getSpritesheet(2)).toBe("spritesheet_items");
+});
+
+test("getSpritesheet: spritesheet index 2 with defined spritesheet_items variable returns the variable", () => {
+  spritesheet_items = "fake_name_again_again";
+  expect(game.getSpritesheet(2)).toBe("fake_name_again_again");
 });
 
 test("getSpritesheet: spritesheet with unmapped index returns undefined spritesheet", () => {
