@@ -27,8 +27,6 @@ I'm solving this (for now) by adding require statements as needed for unit testi
 
 ### game.js
 
-2. getSpritesheetInfo
-    1. verify indexes 0, 1, 2, other return as expected
 3. getSpriteLocation
     1. verify a few inputs return the correct outputs
     2. verify a couple out of bounds indexes work fine
